@@ -1,5 +1,8 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit} from '@angular/core';
 import { DataService } from './service/data.service';
+import { Task } from './interface/task';
+import { MatCheckboxChange } from '@angular/material/checkbox';
+
 
 @Component({
   selector: 'app-root',
@@ -10,6 +13,9 @@ export class AppComponent implements OnInit {
   
   mockData: any;
   taskList: Task[] = [];
+  completedTasks: Task[] = [];
+  inProgressTasks: Task[] = [];
+
 
   constructor (
     private dataService: DataService
@@ -20,8 +26,22 @@ export class AppComponent implements OnInit {
       data => {
         this.mockData = data;
         this.taskList = this.mockData.todos;
+        this.classifyTasks();
       }
     );
+  }
+
+  classifyTasks() {
+    this.taskList.filter(task => {
+      if(task.completed) 
+        this.completedTasks.push(task);
+      else 
+        this.inProgressTasks.push(task);
+    });
+  }
+
+  onCompleteChange(event: MatCheckboxChange, taskChange: Task) {
+    this.taskList.filter(task => task.id === taskChange.id)[0].completed = event.checked;
   }
 
 }

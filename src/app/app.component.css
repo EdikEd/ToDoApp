@@ -1,0 +1,8 @@
+.toDoList {
+    margin: 100px auto;
+    width: 30%;
+}
+
+mat-checkbox {
+    margin-right: 15px;
+}

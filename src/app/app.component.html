@@ -1,0 +1,28 @@
+<mat-card class="toDoList">
+
+    <mat-card-header>
+        <mat-card-title>To do list</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        
+        <h4>Completed</h4>
+        <mat-divider></mat-divider>
+        <mat-list>
+            <mat-list-item *ngFor="let task of completedTasks">
+                <mat-checkbox (change)="onCompleteChange($event,task)" [checked]="task.completed"></mat-checkbox>
+                {{task.todo}}
+            </mat-list-item>
+        </mat-list>
+
+        <h4>In progress</h4>
+        <mat-divider></mat-divider>
+        <mat-list>
+            <mat-list-item *ngFor="let task of inProgressTasks">
+                <mat-checkbox [checked]="task.completed"></mat-checkbox>
+                {{task.todo}}
+            </mat-list-item>
+        </mat-list>
+
+    </mat-card-content>
+</mat-card>
