@@ -41,7 +41,17 @@ export class AppComponent implements OnInit {
   }
 
   onCompleteChange(event: MatCheckboxChange, taskChange: Task) {
-    this.taskList.filter(task => task.id === taskChange.id)[0].completed = event.checked;
+    let task = this.taskList.filter(task => task.id === taskChange.id)[0];
+    task.completed = event.checked;
+    if(event.checked) {
+      let elemIndex = this.inProgressTasks.indexOf(task);
+      this.inProgressTasks.splice(elemIndex,1);
+      this.completedTasks.push(task);
+    } else {
+      let elemIndex = this.completedTasks.indexOf(task);
+      this.completedTasks.splice(elemIndex,1);
+      this.inProgressTasks.push(task);
+    }
   }
 
 }

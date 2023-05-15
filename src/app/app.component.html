@@ -19,7 +19,7 @@
         <mat-divider></mat-divider>
         <mat-list>
             <mat-list-item *ngFor="let task of inProgressTasks">
-                <mat-checkbox [checked]="task.completed"></mat-checkbox>
+                <mat-checkbox (change)="onCompleteChange($event,task)" [checked]="task.completed"></mat-checkbox>
                 {{task.todo}}
             </mat-list-item>
         </mat-list>
