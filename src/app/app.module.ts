@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatTooltipModule} from '@angular/material/tooltip';
  
 @NgModule({
   declarations: [
@@ -22,11 +23,12 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    FormsModule,
     MatCardModule,
     MatListModule,
     MatCheckboxModule,
-    FormsModule
-    
+    MatTooltipModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

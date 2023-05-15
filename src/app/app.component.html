@@ -1,16 +1,19 @@
 <mat-card class="toDoList">
 
-    <mat-card-header>
+    <mat-card-header class="card-header">
         <mat-card-title>To do list</mat-card-title>
+        <div class="date">
+            {{date | date:'short' }}
+        </div>
     </mat-card-header>
-
+    <mat-divider></mat-divider>
     <mat-card-content>
-        
-        <h4>Completed</h4>
+        <h4 style="margin-top: 20px;">Completed</h4>
         <mat-divider></mat-divider>
         <mat-list>
             <mat-list-item *ngFor="let task of completedTasks">
                 <mat-checkbox (change)="onCompleteChange($event,task)" [checked]="task.completed"></mat-checkbox>
+                {{task.date | date: 'short'}}
                 {{task.todo}}
             </mat-list-item>
         </mat-list>
@@ -23,6 +26,5 @@
                 {{task.todo}}
             </mat-list-item>
         </mat-list>
-
     </mat-card-content>
 </mat-card>

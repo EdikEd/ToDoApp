@@ -15,6 +15,10 @@ export class AppComponent implements OnInit {
   taskList: Task[] = [];
   completedTasks: Task[] = [];
   inProgressTasks: Task[] = [];
+  matToolTipText: string;
+
+  date: Date = new Date();
+  
 
 
   constructor (
@@ -43,6 +47,7 @@ export class AppComponent implements OnInit {
   onCompleteChange(event: MatCheckboxChange, taskChange: Task) {
     let task = this.taskList.filter(task => task.id === taskChange.id)[0];
     task.completed = event.checked;
+    task.date = new Date();
     if(event.checked) {
       let elemIndex = this.inProgressTasks.indexOf(task);
       this.inProgressTasks.splice(elemIndex,1);

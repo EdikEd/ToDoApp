@@ -3,6 +3,11 @@
     width: 30%;
 }
 
+.card-header {
+    display: flex;
+    justify-content: space-between;
+}
+
 mat-checkbox {
     margin-right: 15px;
 }
